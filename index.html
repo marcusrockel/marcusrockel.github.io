@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcus Rockel</title>
+<meta name="description" content="Marcus Rockel — postdoctoral researcher in mathematical statistics at the University of Freiburg. Exact regions and sharp inequalities between dependence measures for copulas, Chatterjee's rank correlation, Lean 4 formalizations.">
+<meta name="author" content="Marcus Rockel">
+<link rel="canonical" href="https://marcusrockel.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Marcus Rockel">
+<meta property="og:description" content="Postdoctoral researcher in mathematical statistics, University of Freiburg. Copulas, dependence measures, exact regions.">
+<meta property="og:url" content="https://marcusrockel.github.io/">
+<meta property="og:image" content="https://github.com/Corrram.png?size=400">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f3a5f'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23fff' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Marcus Rockel",
+  "honorificSuffix": "Dr. rer. nat.",
+  "jobTitle": "Postdoctoral Researcher",
+  "affiliation": {"@type": "Organization", "name": "University of Freiburg, Department of Quantitative Finance"},
+  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "University of Freiburg"}, {"@type": "CollegeOrUniversity", "name": "University of Bonn"}],
+  "email": "mailto:marcus.rockel@finance.uni-freiburg.de",
+  "url": "https://marcusrockel.github.io/",
+  "image": "https://github.com/Corrram.png?size=400",
+  "knowsAbout": ["Copulas", "Dependence measures", "Exact regions", "Chatterjee's rank correlation", "Rank correlations", "Mathematical statistics", "Lean 4"],
+  "sameAs": [
+    "https://orcid.org/0009-0005-1818-3831",
+    "https://scholar.google.com/citations?user=pjlshKQAAAAJ",
+    "https://github.com/Corrram",
+    "https://www.linkedin.com/in/marcus-rockel/",
+    "https://www.researchgate.net/profile/Marcus-Rockel"
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --text: #1d232b;
+    --muted: #5b6573;
+    --faint: #8a93a0;
+    --rule: #e4e1da;
+    --accent: #1f3a5f;
+    --accent-soft: #e8eef6;
+    --link: #1f4f8a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171c;
+      --surface: #1b1f26;
+      --text: #e6e8eb;
+      --muted: #a6aeb9;
+      --faint: #7c8591;
+      --rule: #2c323b;
+      --accent: #9dbbe3;
+      --accent-soft: #223247;
+      --link: #9dc1f0;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 2px; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 56px 20px 72px; }
+
+  /* Header */
+  header.intro { display: grid; grid-template-columns: 132px 1fr; gap: 28px; align-items: center; }
+  .portrait {
+    width: 132px; height: 132px; border-radius: 50%;
+    object-fit: cover; background: var(--accent-soft);
+    border: 1px solid var(--rule);
+    font-size: 0; color: transparent; /* hide alt text if image fails */
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: 2.35rem; line-height: 1.1; margin: 0 0 6px; letter-spacing: -0.01em;
+  }
+  .role { margin: 0; color: var(--muted); font-size: 1.02rem; }
+  .role strong { color: var(--text); font-weight: 500; }
+  nav.links { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 14px; }
+  nav.links a {
+    font-size: 0.86rem; font-weight: 500;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+  nav.links a:hover { text-decoration: none; filter: brightness(0.97); }
+
+  /* Page nav */
+  nav.toc {
+    display: flex; flex-wrap: wrap; gap: 4px 18px;
+    margin: 40px 0 8px; padding: 10px 0;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    font-size: 0.9rem;
+  }
+  nav.toc a { color: var(--muted); }
+  nav.toc a:hover { color: var(--text); }
+
+  section { margin-top: 44px; scroll-margin-top: 16px; }
+  h2 {
+    font-family: var(--serif); font-weight: 600; font-size: 1.45rem;
+    margin: 0 0 14px; letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--faint); margin: 26px 0 10px;
+  }
+  p { margin: 0 0 12px; }
+  .lead { font-size: 1.05rem; }
+
+  ul.topics { margin: 0; padding-left: 1.15rem; }
+  ul.topics li { margin: 4px 0; }
+
+  /* Publication list */
+  ol.pubs { list-style: none; margin: 0; padding: 0; }
+  ol.pubs li { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  ol.pubs li:last-child { border-bottom: 0; }
+  .ptitle { font-weight: 500; }
+  .pmeta { color: var(--muted); font-size: 0.93rem; }
+  .pmeta em { font-style: italic; }
+  .me { color: var(--text); font-weight: 500; }
+  .badges { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .badges a {
+    font-size: 0.76rem; font-weight: 600; letter-spacing: 0.02em;
+    border: 1px solid var(--rule); border-radius: 6px; padding: 1px 7px;
+    color: var(--muted); background: var(--surface);
+  }
+  .badges a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .card h4 { margin: 0 0 4px; font-size: 1rem; font-weight: 600; }
+  .card p { margin: 0 0 8px; color: var(--muted); font-size: 0.93rem; }
+  .card .badges { margin-top: 0; }
+
+  table.teach { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  table.teach td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  table.teach td:first-child { padding-right: 16px; }
+  table.teach td:last-child { color: var(--muted); white-space: nowrap; text-align: right; }
+  table.teach tr:last-child td { border-bottom: 0; }
+
+  dl.cv { display: grid; grid-template-columns: 150px 1fr; gap: 6px 16px; margin: 0; font-size: 0.95rem; }
+  dl.cv dt { color: var(--muted); }
+  dl.cv dd { margin: 0; }
+
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--faint); font-size: 0.85rem; }
+
+  @media (max-width: 560px) {
+    .wrap { padding-top: 36px; }
+    header.intro { grid-template-columns: 1fr; gap: 18px; }
+    .portrait { width: 104px; height: 104px; }
+    h1 { font-size: 1.95rem; }
+    dl.cv { grid-template-columns: 1fr; gap: 0 0; }
+    dl.cv dd { margin-bottom: 10px; }
+    table.teach td:last-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="intro">
+    <img class="portrait" src="https://github.com/Corrram.png?size=264" alt="Portrait of Marcus Rockel" width="132" height="132">
+    <div>
+      <h1>Marcus Rockel</h1>
+      <p class="role"><strong>Postdoctoral Researcher</strong> · Department of Quantitative Finance, University of Freiburg</p>
+      <nav class="links" aria-label="Profiles">
+        <a href="mailto:marcus.rockel@finance.uni-freiburg.de">Email</a>
+        <a href="https://orcid.org/0009-0005-1818-3831">ORCID</a>
+        <a href="https://scholar.google.com/citations?user=pjlshKQAAAAJ">Google Scholar</a>
+        <a href="https://arxiv.org/search/?query=Rockel%2C+Marcus&amp;searchtype=author">arXiv</a>
+        <a href="https://github.com/Corrram">GitHub</a>
+        <a href="https://www.linkedin.com/in/marcus-rockel/">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Marcus-Rockel">ResearchGate</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#software">Software &amp; formalization</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#cv">Education</a>
+  </nav>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">I am a mathematician working in mathematical statistics. My research determines <em>exact regions</em> and sharp inequalities between dependence measures for copulas — in particular between Chatterjee's rank correlation&nbsp;ξ and classical measures of concordance such as Spearman's&nbsp;ρ, Kendall's&nbsp;τ, Spearman's footrule, Gini's&nbsp;γ and Blomqvist's&nbsp;β.</p>
+    <p>My articles are accompanied by Lean&nbsp;4 formalizations of their main results, and I maintain open-source software for computing with copulas. I received my doctorate (Dr.&nbsp;rer.&nbsp;nat.) from the University of Freiburg in 2025 and studied mathematics at the University of Bonn. Alongside research, I work as a freelance data engineer (Python, data pipelines, LLM-based tooling).</p>
+  </section>
+
+  <section id="research">
+    <h2>Research interests</h2>
+    <ul class="topics">
+      <li>Copulas and dependence modeling</li>
+      <li>Exact (attainable) regions and sharp inequalities between rank correlations and dependence measures</li>
+      <li>Chatterjee's rank correlation and measures of functional dependence</li>
+      <li>Stochastic orderings, positive dependence, optimal transport methods for copula extremal problems</li>
+      <li>Formal verification of probabilistic and statistical results in Lean&nbsp;4</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <h3>Journal articles &amp; proceedings</h3>
+    <ol class="pubs">
+      <li>
+        <div class="ptitle">The exact region between Chatterjee's and Blest's rank correlations</div>
+        <div class="pmeta"><span class="me">M. Rockel</span> · <em>International Journal of Approximate Reasoning</em>, 109744, 2026</div>
+        <div class="badges">
+          <a href="https://doi.org/10.1016/j.ijar.2026.109744">DOI</a>
+          <a href="https://arxiv.org/abs/2603.09768">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/Rockel2026XiBlest/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">The exact region and an inequality between Chatterjee's and Spearman's rank correlations</div>
+        <div class="pmeta">J. Ansari, <span class="me">M. Rockel</span> · <em>Journal of Multivariate Analysis</em> 214, 105630, 2026</div>
+        <div class="badges">
+          <a href="https://doi.org/10.1016/j.jmva.2026.105630">DOI</a>
+          <a href="https://arxiv.org/abs/2506.15897">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/AnsariRockel2026XiRho/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">On the exact region between Chatterjee's rank correlation and Spearman's footrule</div>
+        <div class="pmeta"><span class="me">M. Rockel</span> · <em>Journal of Computational and Applied Mathematics</em>, 117466, 2026</div>
+        <div class="badges">
+          <a href="https://doi.org/10.1016/j.cam.2026.117466">DOI</a>
+          <a href="https://arxiv.org/abs/2509.07232">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/Rockel2026XiFootrule/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">Dependence properties of bivariate copula families</div>
+        <div class="pmeta">J. Ansari, <span class="me">M. Rockel</span> · <em>Dependence Modeling</em> 12(1), 20240002, 2024</div>
+        <div class="badges">
+          <a href="https://doi.org/10.1515/demo-2024-0002">DOI</a>
+          <a href="https://arxiv.org/abs/2310.17307">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/AnsariRockel2024/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">An empirical study on new model-free multi-output variable selection methods</div>
+        <div class="pmeta">J. Ansari, E. Lütkebohmert, <span class="me">M. Rockel</span> · In: <em>Combining, Modelling and Analyzing Imprecision, Randomness and Dependence</em> (SMPS 2024), Advances in Intelligent Systems and Computing, pp. 9–17, Springer, 2024</div>
+        <div class="badges">
+          <a href="https://doi.org/10.1007/978-3-031-65993-5_2">DOI</a>
+        </div>
+      </li>
+    </ol>
+
+    <h3>Preprints</h3>
+    <ol class="pubs">
+      <li>
+        <div class="ptitle">Rank weighting and asymmetry in Blest's rank correlation: two exact regions</div>
+        <div class="pmeta"><span class="me">M. Rockel</span> · arXiv:2609.27634, 2026</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2609.27634">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/Rockel2026ExactBlest/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">The exact region determined by Spearman's rho and Gini's gamma</div>
+        <div class="pmeta">J. Ansari, <span class="me">M. Rockel</span>, S. Steinmaßl · arXiv:2609.19890, 2026</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2609.19890">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/AnsariRockelSteinmassl2026RhoGamma/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">The exact Spearman rho–footrule region via optimal transport with applications to finite rankings, mixability, and Chatterjee's rank correlation</div>
+        <div class="pmeta">J. Ansari, <span class="me">M. Rockel</span> · arXiv:2608.20176, 2026</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2608.20176">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/AnsariRockel2026RhoFootrule/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">The exact region determined by Kendall's tau, Spearman's footrule and Blomqvist's beta</div>
+        <div class="pmeta">J. I. Orenday Lares, <span class="me">M. Rockel</span> · arXiv:2607.12841, 2026</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2607.12841">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/OrendayLaresRockel2026TauFootruleBeta/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">The exact region between Chatterjee's ξ and Blomqvist's β</div>
+        <div class="pmeta">J. I. Orenday Lares, <span class="me">M. Rockel</span> · arXiv:2606.30033, 2026</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2606.30033">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/OrendayLaresRockel2026XiBeta/">Lean</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">Kendall and Spearman bounds for Chatterjee's rank correlation under positive dependence</div>
+        <div class="pmeta"><span class="me">M. Rockel</span> · arXiv:2606.22074, 2026</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2606.22074">arXiv</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">Measures of association for approximating copulas</div>
+        <div class="pmeta"><span class="me">M. Rockel</span> · arXiv:2505.08045, 2025</div>
+        <div class="badges">
+          <a href="https://arxiv.org/abs/2505.08045">arXiv</a>
+          <a href="https://corrram.github.io/lean-verifications/papers/Rockel2025Approximation/">Lean</a>
+        </div>
+      </li>
+    </ol>
+
+    <h3>Theses</h3>
+    <ol class="pubs">
+      <li>
+        <div class="ptitle">Chatterjee's rank correlation and classical concordance: copula perspectives, bounds, and computation</div>
+        <div class="pmeta">Doctoral thesis (Dr. rer. nat.), University of Freiburg, 2025</div>
+        <div class="badges">
+          <a href="https://doi.org/10.6094/UNIFR/283378">DOI</a>
+        </div>
+      </li>
+      <li>
+        <div class="ptitle">Dimensional improvements of functional inequalities for log-concave distributions</div>
+        <div class="pmeta">Master's thesis, University of Bonn, 2018</div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="software">
+    <h2>Software &amp; formalization</h2>
+    <div class="cards">
+      <div class="card">
+        <h4>lean-verifications</h4>
+        <p>Lean&nbsp;4 supplements to my articles: one folder per paper, with a coverage map from each result to its formal statement, checked in CI.</p>
+        <div class="badges">
+          <a href="https://corrram.github.io/lean-verifications/">Handbook</a>
+          <a href="https://github.com/Corrram/lean-verifications">GitHub</a>
+        </div>
+      </div>
+      <div class="card">
+        <h4>copula (Lean&nbsp;4)</h4>
+        <p>Reusable Lean&nbsp;4 library of copula mathematics on which the article supplements build.</p>
+        <div class="badges">
+          <a href="https://github.com/Corrram/copula">GitHub</a>
+        </div>
+      </div>
+      <div class="card">
+        <h4>copul (Python)</h4>
+        <p>Computation with and visualization of bivariate copula families, including Spearman's ρ, Kendall's τ and Chatterjee's ξ. <code>pip install copul</code></p>
+        <div class="badges">
+          <a href="https://copul.readthedocs.io/">Docs</a>
+          <a href="https://github.com/Corrram/copul">GitHub</a>
+          <a href="https://pypi.org/project/copul/">PyPI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p>University of Freiburg, Faculty of Economics and Behavioral Sciences</p>
+    <table class="teach">
+      <tr><td>Python Course — a programming introduction to Python for economists (lecture)</td><td>since WS 2023/24</td></tr>
+      <tr><td>Statistics (exercise sessions)</td><td>SS 2022, SS 2023</td></tr>
+      <tr><td>Mathematical Methods for Economics and Finance (exercise sessions)</td><td>WS 2021/22, WS 2022/23</td></tr>
+    </table>
+  </section>
+
+  <section id="cv">
+    <h2>Education &amp; positions</h2>
+    <dl class="cv">
+      <dt>since 12/2025</dt><dd>Postdoctoral Researcher, Department of Quantitative Finance, University of Freiburg</dd>
+      <dt>2021 – 2025</dt><dd>Doctoral Researcher, University of Freiburg · Dr. rer. nat. (2025)</dd>
+      <dt>since 2022</dt><dd>Freelance Data Engineer</dd>
+      <dt>2016 – 2018</dt><dd>M.Sc. Mathematics, University of Bonn</dd>
+      <dt>2012 – 2016</dt><dd>B.Sc. Mathematics, University of Bonn</dd>
+    </dl>
+  </section>
+
+  <footer>
+    © 2026 Marcus Rockel · Last updated September 2026
+  </footer>
+
+</div>
+</body>
+</html>
